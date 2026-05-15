@@ -422,6 +422,18 @@ main {
   font-family: var(--mono);
   font-size: .9em;
 }
+.pub-title a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color .2s ease, color .2s ease;
+}
+.pub-title a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
 .pub-links a {
   font-family: var(--mono);
   font-size: .82rem;
