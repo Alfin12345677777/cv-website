@@ -129,6 +129,50 @@ main {
   padding-top: 4rem;
   padding-bottom: var(--section-pad);
 }
+
+/* ============================================================
+   highlights strip (below hero, above research)
+   ============================================================ */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin-bottom: 0;
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  padding: 1.4rem 1.6rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.highlight-label {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.highlight-text {
+  font-size: .96rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.highlight-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.highlight-link {
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  margin-top: .2rem;
+}
+@media (max-width: 720px) {
+  .highlights { grid-template-columns: 1fr; }
+}
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 280px;
