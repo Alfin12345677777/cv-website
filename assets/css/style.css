@@ -539,6 +539,20 @@ main {
   margin-right: 1.2rem;
 }
 
+.proj-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  display: block;
+  padding: .5rem;
+}
+.proj-img--logo {
+  object-fit: contain;
+  padding: 2.5rem;
+}
+
 @media (max-width: 860px) {
   .proj, .proj:nth-child(even) {
     grid-template-columns: 1fr;
