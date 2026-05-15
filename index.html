@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alfin W. A. Putra — 3D Computer Vision Researcher</title>
+  <meta name="description" content="Alfin William Adi Putra — undergraduate researcher in 3D computer vision and medical AI at Handong Global University. Currently working on hand pose and MANO mesh reconstruction at the AIMV Lab." />
+  <meta name="author" content="Alfin William Adi Putra" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="Alfin W. A. Putra — 3D Computer Vision Researcher" />
+  <meta property="og:description" content="Undergraduate researcher in 3D computer vision and medical AI at Handong Global University." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <!-- Fonts: editorial serif + refined sans, NOT Inter/Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Decorative grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Top nav (sticky, minimal) -->
+  <nav class="topnav">
+    <a href="#top" class="brand">A.&nbsp;Putra</a>
+    <div class="navlinks">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ================== HERO ================== -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span>undergraduate researcher · pohang, kr</span>
+          </div>
+          <h1 class="display-name">
+            Alfin <span class="middle">William&nbsp;Adi</span> Putra
+          </h1>
+          <p class="lede">
+            I'm an undergraduate researcher working on <em>3D computer vision</em> and <em>medical AI</em>
+            at the <a href="https://www.handong.edu" target="_blank" rel="noopener">Handong Global University</a> AIMV Lab.
+            My current research builds full RGB-to-mesh pipelines for the human hand —
+            predicting MANO rotations from images, then generating anatomically valid posed meshes through
+            deterministic forward kinematics.
+          </p>
+          <p class="lede">
+            Before 3D vision I worked on Korean NLP (co-author, JNLP 2026)
+            and built two production apps as the lead developer at <a href="#projects">Stellink</a> and Beacon.
+            I'm currently looking for summer / winter 2026 research internships in 3D vision, multimodal models, or medical AI.
+          </p>
+
+          <div class="cta-row">
+            <a href="assets/cv/Alfin_Putra_CV.pdf" class="cta primary" target="_blank">
+              <span>Download CV</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a href="mailto:alfinwilliam30@gmail.com" class="cta">Email</a>
+            <a href="https://github.com/alfinputra" class="cta" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <!-- PLACEHOLDER: replace assets/img/portrait.jpg with your actual photo -->
+          <div class="portrait-frame">
+            <img src="assets/img/portrait.jpg" alt="Portrait of Alfin Putra" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="portrait-fallback">
+              <span>portrait</span>
+              <small>assets/img/portrait.jpg</small>
+            </div>
+          </div>
+          <div class="photo-caption">Pohang, 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== RESEARCH INTERESTS ================== -->
+    <section id="research" class="section">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Research Interests</h2>
+      </div>
+
+      <div class="interests-grid">
+        <div class="interest">
+          <h3>3D Vision &amp; Mesh Reconstruction</h3>
+          <p>
+            Hand and body mesh reconstruction from RGB. MANO &amp; SMPL-X parametric models.
+            Forward kinematics, linear blend skinning, and the gap between
+            direct vertex regression and rotation-driven generation.
+          </p>
+        </div>
+        <div class="interest">
+          <h3>Medical Computer Vision</h3>
+          <p>
+            3D structure recovery for diagnostic and rehabilitation aids. Anatomically valid
+            outputs as a first-class constraint rather than a post-hoc check.
+          </p>
+        </div>
+        <div class="interest">
+          <h3>Multimodal &amp; Foundation Models</h3>
+          <p>
+            Combining visual backbones (DINOv2) with structural priors (graph convolutions on
+            landmarks). Cross-attention fusion. Diffusion- and flow-based 3D generation.
+          </p>
+        </div>
+        <div class="interest">
+          <h3>Korean NLP</h3>
+          <p>
+            Multi-label emotion classification with KoELECTRA / BERT.
+            Semi-supervised pseudo-labeling for class imbalance. Threshold optimization
+            and ensemble methods.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== PUBLICATIONS ================== -->
+    <section id="publications" class="section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Publications</h2>
+      </div>
+
+      <ol class="pub-list">
+        <li class="pub">
+          <div class="pub-marker">in&nbsp;prep</div>
+          <div class="pub-body">
+            <h3 class="pub-title">
+              Hand Pose Reconstruction and Kinematic Modeling Using Registered 3D Hand Data
+            </h3>
+            <div class="pub-authors">
+              <span class="me">Alfin&nbsp;W.&nbsp;A.&nbsp;Putra</span>, X.&nbsp;P.&nbsp;Yang
+            </div>
+            <div class="pub-venue">
+              Targeting BMVC / ACCV 2026. <span class="status">Draft — v19 ablations in progress.</span>
+            </div>
+            <p class="pub-abstract">
+              A hybrid RGB + 2D landmark pipeline that predicts MANO rotations via DINOv2 visual tokens,
+              SemGCN-encoded landmark features, cross-attention fusion, and iterative residual refinement,
+              then generates anatomically valid meshes through deterministic FK/LBS using a Korean-shaped MANO template.
+              Achieves <strong>PA-MPJPE 7.73mm</strong> and rotation error <strong>14.6° (mean) / 13.6° (median)</strong>.
+            </p>
+            <div class="pub-links">
+              <a href="https://github.com/Alfin12345677777/Hand_pose_project" target="_blank" rel="noopener">code →</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub">
+          <div class="pub-marker">2026</div>
+          <div class="pub-body">
+            <h3 class="pub-title">
+              Multiple Approaches to Improving Multi-Label Emotion Classification in Korean Texts Using Semi-Supervised Korean BERT
+            </h3>
+            <div class="pub-authors">
+              J.&nbsp;Han, J.&nbsp;Kim, D.&nbsp;Shim, <span class="me">Alfin&nbsp;W.&nbsp;A.&nbsp;Putra</span>
+            </div>
+            <div class="pub-venue">
+              Journal of Korean Natural Language Processing (JNLP), 2026.
+              <span class="status">Final review.</span>
+            </div>
+            <p class="pub-abstract">
+              KoELECTRA / BERT with semi-supervised pseudo-labeling for 37-category Korean emotion classification.
+              Threshold optimization and hard-voting ensemble improved Macro-F1 from 0.56 to <strong>0.6646</strong> (+18.7%).
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================== PROJECTS ================== -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+
+      <div class="proj-list">
+
+        <!-- Project 1: Hand mesh -->
+        <article class="proj">
+          <div class="proj-media">
+            <div class="img-placeholder">
+              <span>mesh comparison</span>
+              <small>assets/img/handmesh-comparison.png</small>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">2025 — present · research</div>
+            <h3 class="proj-title">Hand Pose &amp; MANO Mesh Reconstruction</h3>
+            <p>
+              Full RGB → 3D joints → MANO rotations → posed mesh pipeline. Hybrid architecture
+              combining DINOv2 visual tokens with SemGCN-encoded 2D landmarks via cross-attention.
+              IEF-style iterative refinement with combined geodesic + Frobenius rotation loss.
+              Korean-shaped MANO template rebuilt for rig compatibility (passed FK/LBS audits).
+            </p>
+            <ul class="proj-stack">
+              <li>PyTorch</li><li>DINOv2 ViT-S/14</li><li>SemGCN</li>
+              <li>MANO FK/LBS</li><li>FreiHAND · HO3D · InterHand2.6M</li>
+            </ul>
+            <div class="proj-links">
+              <a href="https://github.com/Alfin12345677777/Hand_pose_project" target="_blank" rel="noopener">github →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Stellink -->
+        <article class="proj">
+          <div class="proj-media">
+            <div class="img-placeholder">
+              <span>stellink screenshot</span>
+              <small>assets/img/stellink-screens.png</small>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">2025–2026 · startup, co-founder</div>
+            <h3 class="proj-title">Stellink — emotion journaling app</h3>
+            <p>
+              End-to-end emotion-journaling app. KoELECTRA-based Korean emotion classifier (37 categories)
+              productionized into a Firebase + Flutter stack. Personalized monthly "emotion Wrapped"
+              reports generated by combining Tableau analytics with DALL·E image generation.
+              Released on ONE Store.
+            </p>
+            <ul class="proj-stack">
+              <li>Flutter</li><li>Firebase</li><li>GCP</li><li>KoELECTRA</li><li>DALL·E API</li><li>Tableau</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Project 3: Beacon -->
+        <article class="proj">
+          <div class="proj-media">
+            <div class="img-placeholder">
+              <span>beacon screenshot</span>
+              <small>assets/img/beacon-screens.png</small>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">2025–2026 · startup, lead developer</div>
+            <h3 class="proj-title">Beacon — international student companion</h3>
+            <p>
+              All-in-one onboarding app for international students at Korean universities.
+              Country-based community boards, real-time notifications, and step-by-step UI for
+              Korean administrative procedures (visa, ARC, banking). Cross-platform release on
+              App Store and Google Play.
+            </p>
+            <ul class="proj-stack">
+              <li>Flutter</li><li>Supabase</li><li>PostgreSQL</li><li>Realtime sync</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================== EXPERIENCE / EDUCATION ================== -->
+    <section id="experience" class="section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Education &amp; Experience</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-date">2021 — 2026</div>
+          <div class="tl-body">
+            <h3>B.S., Computer Science &amp; Electronic Engineering (IT)</h3>
+            <div class="tl-org">Handong Global University · GPA 3.8 / 4.5</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025.03 — now</div>
+          <div class="tl-body">
+            <h3>Undergraduate Researcher, AIMV Lab</h3>
+            <div class="tl-org">AI Medical Vision Lab · Advisor: Prof. Xiao Peng Yang</div>
+            <p>3D hand pose and MANO mesh reconstruction. Designed full RGB-to-mesh pipeline; targeting BMVC/ACCV submission.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025.03 — 2025.06</div>
+          <div class="tl-body">
+            <h3>Audited: CS479 Machine Learning for 3D Data</h3>
+            <div class="tl-org">KAIST · Prof. Minhyuk Sung</div>
+            <p>Independently completed all four assignments on point clouds, mesh processing, and 3D representation learning.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025.01 — now</div>
+          <div class="tl-body">
+            <h3>Co-founder &amp; Developer, Stellink</h3>
+            <div class="tl-org">Startup · Korean emotion-journaling app · ONE Store</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025.08 — 2026.02</div>
+          <div class="tl-body">
+            <h3>Lead Developer, Beacon</h3>
+            <div class="tl-org">Startup · International student companion app · App Store + Google Play</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2024 — 2025</div>
+          <div class="tl-body">
+            <h3>Teaching Assistant — Python Programming &amp; General Biology</h3>
+            <div class="tl-org">Handong Global University</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025.07</div>
+          <div class="tl-body">
+            <h3>🏆 Best Idea Award — Junction Asia 2025</h3>
+            <div class="tl-org">Asia's largest hackathon</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== SKILLS ================== -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-col">
+          <div class="skill-label">3D Vision</div>
+          <ul>
+            <li>MANO / SMPL-X</li>
+            <li>Forward Kinematics &amp; LBS</li>
+            <li>DINOv2 / ViT</li>
+            <li>SemGCN</li>
+            <li>Cross-Attention Fusion</li>
+            <li>IEF · Geodesic Loss</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="skill-label">ML / DL</div>
+          <ul>
+            <li>PyTorch</li>
+            <li>NumPy · Pandas · OpenCV</li>
+            <li>Trimesh</li>
+            <li>Diffusion (learning)</li>
+            <li>CUDA / Linux</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="skill-label">NLP</div>
+          <ul>
+            <li>KoELECTRA · BERT</li>
+            <li>Semi-supervised learning</li>
+            <li>Threshold opt. · Ensembling</li>
+            <li>Web scraping / data mining</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="skill-label">Engineering</div>
+          <ul>
+            <li>Flutter (iOS · Android)</li>
+            <li>Firebase · GCP</li>
+            <li>Supabase · PostgreSQL</li>
+            <li>Git / GitHub</li>
+            <li>Tableau</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="skill-label">Languages</div>
+          <ul>
+            <li>Indonesian — native</li>
+            <li>English — TOEIC 850</li>
+            <li>Korean — TOPIK 3</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== CONTACT ================== -->
+    <section id="contact" class="section section-contact">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Get in touch</h2>
+      </div>
+
+      <p class="contact-lede">
+        I'm currently applying for summer / winter 2026 research internships in 3D computer vision,
+        multimodal models, and medical AI. If you're a PI or a researcher working in these areas,
+        I'd love to hear from you.
+      </p>
+
+      <div class="contact-grid">
+        <a href="mailto:alfinwilliam30@gmail.com" class="contact-card">
+          <span class="label">email</span>
+          <span class="value">alfinwilliam30@gmail.com</span>
+        </a>
+        <a href="https://github.com/alfinputra" target="_blank" rel="noopener" class="contact-card">
+          <span class="label">github</span>
+          <span class="value">@alfinputra</span>
+        </a>
+        <a href="https://github.com/Alfin12345677777" target="_blank" rel="noopener" class="contact-card">
+          <span class="label">code archive</span>
+          <span class="value">@Alfin12345677777</span>
+        </a>
+        <a href="assets/cv/Alfin_Putra_CV.pdf" target="_blank" class="contact-card">
+          <span class="label">cv</span>
+          <span class="value">download pdf →</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© 2026 Alfin W. A. Putra · Pohang, Republic of Korea</div>
+      <div class="footer-sub">Last updated <span id="last-updated">May 2026</span> · Built by hand with HTML + CSS</div>
+    </footer>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
