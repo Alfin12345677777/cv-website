@@ -41,6 +41,14 @@
         <span class="me">Alfin&nbsp;W.&nbsp;A.&nbsp;Putra</span> · Xiao&nbsp;Peng&nbsp;Yang
         <span class="proj-orcid">ORCID <a href="https://orcid.org/0009-0002-9769-4717" target="_blank" rel="noopener">0009-0002-9769-4717</a></span>
       </p>
+
+      <div class="my-role-box">
+        <span class="my-role-label">my role</span>
+        <p>Designed and implemented the full specialist architecture (DINOv2-S + SemGCN + cross-attention + IEF head),
+        built the Korean MANO template fitting pipeline from 4,532 scans, implemented FK/LBS inference,
+        ran all training experiments (100+), built the gating MLP and SLERP ensemble,
+        conducted all cross-dataset evaluations, wrote paper figures and tables, and first-authored the paper draft.</p>
+      </div>
       <div class="proj-hero-links">
         <a href="https://github.com/AlfinPutra23/KoreanHand-Population-Specific-Hand-Mesh-Reconstruction-via-Learned-Specialist-Foundation-Ensembling" target="_blank" rel="noopener" class="cta primary">
           <span>Code</span>
@@ -132,7 +140,7 @@
 
       <div class="pj-prose">
         <p>All results on a 3,000-frame, 15-subject, subject-disjoint Korean test partition.
-          The ensemble is universal: beats HaMeR-FT on all 25 grasp types, 27 object categories, 15 subjects, 4 viewpoints, and 6 hand regions — no test slice where HaMeR-FT is better.</p>
+          Across all slices evaluated — 25 grasp types, 27 object categories, 15 subjects, 4 viewpoints, 6 hand regions — the learned-α ensemble outperforms HaMeR-FT. No regression found on these slices, though generalisation beyond Korean hands is not yet fully evaluated.</p>
       </div>
 
       <h3 class="pj-sub-heading">Main comparison — Korean test (3,000 frames)</h3>
@@ -448,14 +456,14 @@
       </div>
     </section>
 
-    <!-- ===== REVIEWER ANTICIPATION ===== -->
+    <!-- ===== LIMITATIONS & REVIEWER QUESTIONS ===== -->
     <section class="section pj-section is-visible">
       <div class="section-head">
         <span class="section-num">06</span>
-        <h2 class="section-title">Reviewer Anticipation</h2>
+        <h2 class="section-title">Limitations &amp; Reviewer Questions</h2>
       </div>
       <div class="pj-prose">
-        <p>Every likely reviewer concern is pre-empted in the paper. Listed here for transparency.</p>
+        <p>Honest limitations are discussed in the paper. The table below maps expected reviewer questions to the sections that address them.</p>
       </div>
       <div class="pj-table-wrap">
         <table class="pj-table">
@@ -578,10 +586,52 @@
       </div>
     </section>
 
-    <!-- ===== REFERENCES ===== -->
+    <!-- ===== REPRODUCIBILITY ===== -->
     <section class="section pj-section is-visible">
       <div class="section-head">
         <span class="section-num">09</span>
+        <h2 class="section-title">Reproducibility</h2>
+      </div>
+      <div class="repro-grid">
+        <div class="repro-item repro-yes">
+          <span class="repro-key">Code</span>
+          <span class="repro-val">Public (MIT licence)</span>
+        </div>
+        <div class="repro-item repro-yes">
+          <span class="repro-key">Korean MANO template</span>
+          <span class="repro-val">Public (npz, models/)</span>
+        </div>
+        <div class="repro-item repro-yes">
+          <span class="repro-key">Evaluation scripts</span>
+          <span class="repro-val">Included in repo</span>
+        </div>
+        <div class="repro-item repro-yes">
+          <span class="repro-key">Test split index</span>
+          <span class="repro-val">Public (subject-disjoint)</span>
+        </div>
+        <div class="repro-item repro-partial">
+          <span class="repro-key">Training data</span>
+          <span class="repro-val">AIHub restricted — apply at aihub.or.kr</span>
+        </div>
+        <div class="repro-item repro-partial">
+          <span class="repro-key">Checkpoints</span>
+          <span class="repro-val">Available on request (175 MB each)</span>
+        </div>
+        <div class="repro-item repro-partial">
+          <span class="repro-key">Paper</span>
+          <span class="repro-val">Available after review decision</span>
+        </div>
+        <div class="repro-item repro-yes">
+          <span class="repro-key">Figure generation</span>
+          <span class="repro-val">scripts/make_paper_figures.py</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES ===== -->
+    <section class="section pj-section is-visible">
+      <div class="section-head">
+        <span class="section-num">10</span>
         <h2 class="section-title">References</h2>
       </div>
       <div class="pj-prose">
