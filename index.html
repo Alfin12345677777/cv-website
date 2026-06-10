@@ -59,16 +59,16 @@
             Alfin <span class="middle">William&nbsp;Adi</span> Putra
           </h1>
           <p class="lede">
-            I'm an undergraduate researcher working on <em>3D computer vision</em> and <em>medical AI</em>
-            at the <a href="https://www.handong.edu" target="_blank" rel="noopener">Handong Global University</a> AIMV Lab.
-            My current research builds full RGB-to-mesh pipelines for the human hand —
-            predicting MANO rotations from images, then generating anatomically valid posed meshes through
-            deterministic forward kinematics.
+            I'm an undergraduate researcher in <em>3D computer vision</em> at the
+            <a href="https://www.handong.edu" target="_blank" rel="noopener">Handong Global University</a> AIMV Lab.
+            My current paper — under review at <em>ACCV 2026</em> — shows that training a 22 M-parameter
+            specialist and ensembling it with an unchanged foundation model outperforms full fine-tuning
+            of that foundation model on Korean hands, while preserving zero regression on Western benchmarks.
           </p>
           <p class="lede">
-            Before 3D vision I worked on Korean NLP (co-author, JNLP 2026)
-            and built two production apps as the lead developer at <a href="#projects">Stellink</a> and Beacon.
-            I'm currently looking for summer / winter 2026 research internships in 3D vision, multimodal models, or medical AI.
+            Before this I worked on Korean NLP (co-author, JNLP 2026)
+            and shipped two production apps at <a href="#projects">Stellink</a> and Beacon.
+            I'm looking for summer 2026 research internships in 3D vision, generative modeling, or medical AI.
           </p>
 
           <div class="cta-row">
@@ -110,9 +110,9 @@
         <a href="https://github.com/Alfin12345677777?tab=repositories" class="highlight-link" target="_blank" rel="noopener">assignments →</a>
       </div>
       <div class="highlight">
-        <span class="highlight-label">current result</span>
+        <span class="highlight-label">ACCV 2026 · under review</span>
         <span class="highlight-text">
-          Hand mesh reconstruction: <strong>PA-MPJPE 7.73mm</strong>, rotation error <strong>14.6°</strong>
+          KoreanHand ensemble: <strong>PA-MPJPE 5.31mm</strong>, <strong>PA-MPVPE 5.14mm</strong> — beats SOTA fine-tune by 8.1%, zero regression on FreiHAND
         </span>
       </div>
       <div class="highlight">
@@ -176,25 +176,28 @@
 
       <ol class="pub-list">
         <li class="pub">
-          <div class="pub-marker">in&nbsp;prep</div>
+          <div class="pub-marker">ACCV&nbsp;2026</div>
           <div class="pub-body">
             <h3 class="pub-title">
-              Hand Pose Reconstruction and Kinematic Modeling Using Registered 3D Hand Data
+              KoreanHand: Population-Specialized Hand Mesh Reconstruction
             </h3>
             <div class="pub-authors">
               <span class="me">Alfin&nbsp;W.&nbsp;A.&nbsp;Putra</span>, X.&nbsp;P.&nbsp;Yang
             </div>
             <div class="pub-venue">
-              Targeting BMVC / ACCV 2026. <span class="status">Draft — v19 ablations in progress.</span>
+              Asian Conference on Computer Vision (ACCV) 2026.
+              <span class="status">Under review.</span>
             </div>
             <p class="pub-abstract">
-              A hybrid RGB + 2D landmark pipeline that predicts MANO rotations via DINOv2 visual tokens,
-              SemGCN-encoded landmark features, cross-attention fusion, and iterative residual refinement,
-              then generates anatomically valid meshes through deterministic FK/LBS using a Korean-shaped MANO template.
-              Achieves <strong>PA-MPJPE 7.73mm</strong> and rotation error <strong>14.6° (mean) / 13.6° (median)</strong>.
+              A 22 M-parameter specialist (DINOv2-S + SemGCN + cross-attention + IEF) trained on 92 K Korean hand frames
+              is ensembled with frozen HaMeR via a learned per-rotation SLERP gating MLP. The ensemble achieves
+              <strong>PA-MPJPE 5.31mm / PA-MPVPE 5.14mm</strong> on a 3,000-frame subject-disjoint Korean test set —
+              beating full fine-tuning of HaMeR (40 M params, 5.78 mm) by 8.1% — while maintaining
+              <strong>exact zero regression on FreiHAND</strong> (6.50 mm). A population-specific Korean MANO template
+              fit to 4,532 scans contributes an independent −1.5 mm PA-MPVPE gain.
             </p>
             <div class="pub-links">
-              <a href="https://github.com/Alfin12345677777/Hand_pose_project" target="_blank" rel="noopener">code →</a>
+              <a href="https://github.com/Alfin12345677777/KoreanHand-Population-Specific-Hand-Mesh-Reconstruction-via-Learned-Specialist-Foundation-Ensembling" target="_blank" rel="noopener">code →</a>
             </div>
           </div>
         </li>
@@ -242,20 +245,21 @@
             <div class="img-placeholder" style="display:none"><span>mesh comparison</span><small>assets/img/handmesh-comparison.png</small></div>
           </div>
           <div class="proj-body">
-            <div class="proj-meta">2025 — present · research</div>
-            <h3 class="proj-title">Hand Pose &amp; MANO Mesh Reconstruction</h3>
+            <div class="proj-meta">Jan – Jun 2026 · research · ACCV 2026</div>
+            <h3 class="proj-title">KoreanHand — Population-Specialized Hand Mesh Reconstruction</h3>
             <p>
-              Full RGB → 3D joints → MANO rotations → posed mesh pipeline. Hybrid architecture
-              combining DINOv2 visual tokens with SemGCN-encoded 2D landmarks via cross-attention.
-              IEF-style iterative refinement with combined geodesic + Frobenius rotation loss.
-              Korean-shaped MANO template rebuilt for rig compatibility (passed FK/LBS audits).
+              Instead of fine-tuning a foundation model (which causes +39% regression on Western benchmarks),
+              I trained a 22 M-parameter specialist and ensembled it with frozen HaMeR via a learned
+              per-rotation SLERP gating MLP. Result: <strong>PA-MPJPE 5.31mm on Korean hands</strong>,
+              beating full fine-tuning by 8.1%, with zero FreiHAND regression. A Korean MANO template
+              fit to 4,532 scans contributes an independent −1.5mm gain. 28× smaller than the foundation model.
             </p>
             <ul class="proj-stack">
-              <li>PyTorch</li><li>DINOv2 ViT-S/14</li><li>SemGCN</li>
-              <li>MANO FK/LBS</li><li>FreiHAND · HO3D · InterHand2.6M</li>
+              <li>PyTorch</li><li>DINOv2-S</li><li>SemGCN</li>
+              <li>HaMeR (frozen)</li><li>SLERP gating MLP</li><li>AIHub Korean Hand · FreiHAND</li>
             </ul>
             <div class="proj-links">
-              <a href="https://github.com/Alfin12345677777/Hand_pose_project" target="_blank" rel="noopener">github →</a>
+              <a href="https://github.com/Alfin12345677777/KoreanHand-Population-Specific-Hand-Mesh-Reconstruction-via-Learned-Specialist-Foundation-Ensembling" target="_blank" rel="noopener">github →</a>
             </div>
           </div>
         </article>
