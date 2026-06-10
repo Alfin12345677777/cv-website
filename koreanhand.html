@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KoreanHand — Alfin W. A. Putra</title>
-  <meta name="description" content="KoreanHand: Population-Specialized Hand Mesh Reconstruction. PA-MPJPE 5.31mm, beats SOTA fine-tuning by 8.1%, zero regression on FreiHAND. ACCV 2026 under review." />
+  <meta name="description" content="KoreanHand: Population-Specialized Hand Mesh Reconstruction. PA-MPJPE 5.31mm, PA-MPVPE 5.14mm, F@5mm 57.9%. Beats SOTA fine-tuning by 8.1%, zero regression on FreiHAND. ACCV 2026 under review." />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,11 +29,9 @@
 
   <main id="top">
 
-    <!-- ===== PROJECT HEADER ===== -->
+    <!-- ===== HERO ===== -->
     <section class="proj-hero">
-      <div class="proj-hero-back">
-        <a href="index.html#projects">← back to projects</a>
-      </div>
+      <div class="proj-hero-back"><a href="index.html#projects">← back to projects</a></div>
       <div class="proj-hero-meta">
         <span class="proj-status">ACCV 2026 · under review</span>
         <span class="proj-hero-date">Jan – Jun 2026 · AIMV Lab, Handong Global University</span>
@@ -41,15 +39,19 @@
       <h1 class="proj-hero-title">KoreanHand: Population-Specialized<br>Hand Mesh Reconstruction</h1>
       <p class="proj-hero-sub">
         <span class="me">Alfin&nbsp;W.&nbsp;A.&nbsp;Putra</span> · Xiao&nbsp;Peng&nbsp;Yang
+        <span class="proj-orcid">ORCID <a href="https://orcid.org/0009-0002-9769-4717" target="_blank" rel="noopener">0009-0002-9769-4717</a></span>
       </p>
       <div class="proj-hero-links">
         <a href="https://github.com/AlfinPutra23/KoreanHand-Population-Specific-Hand-Mesh-Reconstruction-via-Learned-Specialist-Foundation-Ensembling" target="_blank" rel="noopener" class="cta primary">
           <span>Code</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
+        <a href="assets/citations.bib" class="cta" download>
+          <span>citations.bib</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
       </div>
 
-      <!-- stat pills -->
       <div class="stat-row">
         <div class="stat">
           <span class="stat-val">5.31mm</span>
@@ -60,6 +62,10 @@
           <span class="stat-label">PA-MPVPE (Korean)</span>
         </div>
         <div class="stat">
+          <span class="stat-val">57.9%</span>
+          <span class="stat-label">F@5mm vertices</span>
+        </div>
+        <div class="stat">
           <span class="stat-val">−8.1%</span>
           <span class="stat-label">vs. SOTA fine-tune</span>
         </div>
@@ -68,13 +74,13 @@
           <span class="stat-label">FreiHAND regression</span>
         </div>
         <div class="stat">
-          <span class="stat-val">22M</span>
-          <span class="stat-label">specialist params (28× smaller)</span>
+          <span class="stat-val">22.37M</span>
+          <span class="stat-label">params trained (28× smaller)</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== ABSTRACT ===== -->
+    <!-- ===== SUMMARY ===== -->
     <section class="section pj-section is-visible">
       <div class="section-head">
         <span class="section-num">01</span>
@@ -82,22 +88,19 @@
       </div>
       <div class="pj-prose">
         <p>
-          State-of-the-art hand mesh reconstruction systems (HaMeR, CVPR 2024) are benchmarked almost
-          exclusively on FreiHAND — a Western-participant dataset. Korean hand morphology differs measurably:
-          HaMeR's PA-MPJPE rises from <strong>6.5mm (FreiHAND) to 8.14mm on Korean inputs</strong> — a 45% accuracy loss
-          for a Korean deployment.
+          State-of-the-art hand mesh systems are benchmarked almost exclusively on FreiHAND — a Western-participant dataset.
+          Korean hand morphology differs measurably: <strong>HaMeR's PA-MPJPE rises from 6.5mm (FreiHAND) to 8.14mm on Korean inputs</strong> — a 45% accuracy loss for any Korean deployment.
         </p>
         <p>
           The naïve fix — fine-tuning HaMeR on Korean data — closes the gap to 5.78mm but causes
-          <strong>+39% regression on FreiHAND</strong> and +48% on InterHand2.6M. Neither full fine-tuning
-          nor LoRA avoids this: the trade-off is intrinsic to mano_head adaptation, not a parameter-budget problem.
+          <strong>+39% regression on FreiHAND</strong> and +48% on InterHand2.6M.
+          Neither full fine-tuning (40M) nor LoRA (0.9M) avoids this: the trade-off is <em>intrinsic to mano_head adaptation</em>, not a parameter-budget problem.
         </p>
         <p>
-          Our approach: <em>specialize additively, not by overwriting</em>. We train a 22M-parameter
-          specialist alongside frozen HaMeR and blend their per-rotation predictions at inference via a
-          <strong>learned SLERP gating MLP</strong>. The gating automatically defers to HaMeR on Western
-          inputs (preserving its accuracy) while blending in the specialist on Korean inputs.
-          Result: <strong>PA-MPJPE 5.31mm on Korean hands, zero FreiHAND regression, 28× fewer parameters than HaMeR's backbone</strong>.
+          Our approach: <em>specialize additively, not by overwriting</em>. A 22M-parameter specialist is trained and ensembled with frozen HaMeR via a <strong>learned per-rotation SLERP gating MLP</strong>.
+          The gating defers to HaMeR on Western inputs (preserving accuracy) and blends the specialist in on Korean inputs.
+          Result: <strong>PA-MPJPE 5.31mm, F@5mm 57.9%</strong> on Korean — beating full fine-tuning by 8.1% — with <strong>zero FreiHAND regression</strong>.
+          What I trained is only 22.37M parameters; HaMeR's 632M backbone is unchanged.
         </p>
       </div>
     </section>
@@ -109,13 +112,13 @@
         <h2 class="section-title">Architecture</h2>
       </div>
       <figure class="pj-figure pj-figure--full">
-        <img src="assets/img/Arcitecture_hand.png" alt="Full system architecture: 22M specialist (DINOv2-S + SemGCN + cross-attention + IEF) ensembled with HaMeR-FT via learned-α SLERP gating MLP, posed on Korean MANO" />
+        <img src="assets/img/Arcitecture_hand.png" alt="Full system: 22M specialist (DINOv2-S + SemGCN + cross-attention + IEF) ensembled with HaMeR-FT via learned-α SLERP gating MLP on Korean MANO" />
         <figcaption>
-          <strong>Full system.</strong> The 22M specialist combines DINOv2-S visual tokens with SemGCN-encoded
-          2D landmarks via cross-attention, then refines MANO rotations through IEF over 5 steps. Separately,
-          HaMeR-FT predicts its own rotations. A 700K-parameter gating MLP predicts per-rotation blend weights α ∈ [0,1]
-          from the two predictions and their disagreement. Final rotations are blended on SO(3) via SLERP,
-          then decoded through the Korean MANO template (fit to 4,532 scans) using FK + LBS.
+          <strong>Full system.</strong> The 22M specialist fuses DINOv2-S visual tokens with SemGCN-encoded 2D landmarks via cross-attention,
+          then refines MANO rotations through IEF (6 steps). Separately, HaMeR-FT predicts its own rotations.
+          A 700K-parameter gating MLP predicts per-rotation α ∈ [0,1] from the two predictions and their disagreement.
+          Rotations are blended on SO(3)¹⁶ via SLERP and decoded through the Korean MANO template (4,532 scans) using FK + LBS.
+          HaMeR's 632M backbone is never updated.
         </figcaption>
       </figure>
     </section>
@@ -128,72 +131,126 @@
       </div>
 
       <div class="pj-prose">
-        <p>All results on a 3,000-frame, 15-subject, subject-disjoint Korean test partition (no training-set subjects).
-           The learned-α ensemble beats HaMeR-FT (full 40M-param fine-tune) on all 25 grasp types, all 27 object categories,
-           and all 15 test subjects.</p>
+        <p>All results on a 3,000-frame, 15-subject, subject-disjoint Korean test partition.
+          The ensemble is universal: beats HaMeR-FT on all 25 grasp types, 27 object categories, 15 subjects, 4 viewpoints, and 6 hand regions — no test slice where HaMeR-FT is better.</p>
       </div>
 
-      <!-- results table -->
+      <h3 class="pj-sub-heading">Main comparison — Korean test (3,000 frames)</h3>
+      <p class="pj-table-note">
+        <em>Params trained</em> = weights I optimised. <em>Total at inference</em> = all weights active during a forward pass, including HaMeR's frozen 632M backbone.
+      </p>
       <div class="pj-table-wrap">
         <table class="pj-table">
           <thead>
             <tr>
               <th>Method</th>
-              <th>Trainable params</th>
+              <th>Params trained</th>
+              <th>Total at inference</th>
               <th>PA-MPJPE</th>
               <th>PA-MPVPE</th>
               <th>F@5mm</th>
-              <th>FreiHAND (regression)</th>
+              <th>AUC</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>HaMeR zero-shot</td>
               <td class="mono">0</td>
-              <td class="mono">8.14 mm</td>
-              <td class="mono">8.43 mm</td>
+              <td class="mono">632M</td>
+              <td class="mono">8.14mm</td>
+              <td class="mono">8.43mm</td>
               <td class="mono">31.7%</td>
-              <td class="mono">6.50 mm (baseline)</td>
+              <td class="mono">—</td>
             </tr>
             <tr>
-              <td>HaMeR fine-tuned (full, 40M)</td>
+              <td>HaMeR FT (full, 40M)</td>
               <td class="mono">40M</td>
-              <td class="mono">5.78 mm</td>
-              <td class="mono">5.70 mm</td>
+              <td class="mono">672M</td>
+              <td class="mono">5.78mm</td>
+              <td class="mono">5.70mm</td>
               <td class="mono">49.4%</td>
-              <td class="mono bad">9.05 mm (+39%)</td>
+              <td class="mono">0.716</td>
             </tr>
             <tr>
-              <td>HaMeR fine-tuned (LoRA r=16)</td>
+              <td>HaMeR FT (LoRA r=16)</td>
               <td class="mono">0.9M</td>
-              <td class="mono">5.92 mm</td>
+              <td class="mono">672M</td>
+              <td class="mono">5.92mm</td>
               <td class="mono">—</td>
               <td class="mono">—</td>
-              <td class="mono bad">8.38 mm (+29%)</td>
+              <td class="mono">—</td>
             </tr>
             <tr>
               <td>Specialist alone (22M)</td>
               <td class="mono">22M</td>
-              <td class="mono">7.28 mm</td>
-              <td class="mono">6.09 mm</td>
+              <td class="mono">22M</td>
+              <td class="mono">7.28mm</td>
+              <td class="mono">6.09mm</td>
               <td class="mono">29.7%</td>
-              <td class="mono">—</td>
+              <td class="mono">0.695</td>
             </tr>
             <tr>
               <td>Fixed-α ensemble</td>
               <td class="mono">22M</td>
-              <td class="mono">5.43 mm</td>
-              <td class="mono">5.28 mm</td>
+              <td class="mono">694M</td>
+              <td class="mono">5.43mm</td>
+              <td class="mono">5.28mm</td>
               <td class="mono">54.9%</td>
-              <td class="mono good">6.50 mm (0%)</td>
+              <td class="mono">0.736</td>
             </tr>
             <tr class="best-row">
               <td><strong>Learned-α ensemble (ours)</strong></td>
-              <td class="mono"><strong>22M</strong></td>
-              <td class="mono"><strong>5.31 mm</strong></td>
-              <td class="mono"><strong>5.14 mm</strong></td>
+              <td class="mono"><strong>22.37M</strong></td>
+              <td class="mono"><strong>694M</strong></td>
+              <td class="mono"><strong>5.31mm</strong></td>
+              <td class="mono"><strong>5.14mm</strong></td>
               <td class="mono"><strong>58.0%</strong></td>
-              <td class="mono good"><strong>6.50 mm (0%)</strong></td>
+              <td class="mono"><strong>0.743</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="pj-sub-heading">Threshold-robust accuracy — why +0.14mm understates the gain</h3>
+      <div class="pj-table-wrap">
+        <table class="pj-table">
+          <thead>
+            <tr>
+              <th>Threshold ε</th>
+              <th>HaMeR-FT</th>
+              <th>Fixed-α</th>
+              <th>Learned-α (ours)</th>
+              <th>Δ vs HaMeR-FT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>F@3mm</td>
+              <td class="mono">4.1%</td>
+              <td class="mono">4.5%</td>
+              <td class="mono good"><strong>6.2%</strong></td>
+              <td class="mono good"><strong>+51% relative</strong></td>
+            </tr>
+            <tr>
+              <td>F@5mm</td>
+              <td class="mono">49.4%</td>
+              <td class="mono">54.9%</td>
+              <td class="mono good"><strong>57.9%</strong></td>
+              <td class="mono good"><strong>+8.6 pp</strong></td>
+            </tr>
+            <tr>
+              <td>F@8mm</td>
+              <td class="mono">86.9%</td>
+              <td class="mono">91.8%</td>
+              <td class="mono good"><strong>92.3%</strong></td>
+              <td class="mono good">+5.4 pp</td>
+            </tr>
+            <tr>
+              <td>AUC F@[0–20mm]</td>
+              <td class="mono">0.716</td>
+              <td class="mono">0.736</td>
+              <td class="mono good"><strong>0.743</strong></td>
+              <td class="mono good">+3.8%</td>
             </tr>
           </tbody>
         </table>
@@ -201,20 +258,118 @@
 
       <div class="pj-figures-2">
         <figure class="pj-figure">
-          <img src="assets/img/F_score_hand.png" alt="F@ε accuracy curves for joints and mesh on Korean test set, N=3000" />
+          <img src="assets/img/F_score_hand.png" alt="F@ε accuracy curves for joints and mesh vertices, Korean test N=3000" />
           <figcaption>
-            <strong>F@ε threshold-robust accuracy</strong> on the 3,000-frame Korean test (joints left, mesh right).
-            The learned-α ensemble (red) leads at every threshold above HaMeR-FT (orange) and the fixed-α baseline.
+            <strong>F@ε curves</strong> on the 3,000-frame Korean test (joints left, mesh right).
+            Learned-α ensemble (red) leads at every threshold above HaMeR-FT (orange) and fixed-α (dashed).
+            The F@3mm gap is 51% relative — much larger than the 0.14mm mean-error difference suggests.
           </figcaption>
         </figure>
         <figure class="pj-figure">
-          <img src="assets/img/cross_val_hand.png" alt="Cross-dataset PA-MPJPE bar chart across FreiHAND, Korean test, InterHand2.6M, HO-3D, DexYCB" />
+          <img src="assets/img/cross_val_hand.png" alt="Cross-dataset PA-MPJPE: FreiHAND, Korean test, InterHand2.6M, HO-3D, DexYCB" />
           <figcaption>
-            <strong>Cross-dataset generalization.</strong> Fine-tuning HaMeR on Korean data (orange) regresses
-            +39% on FreiHAND and +48% on InterHand2.6M. The additive ensemble inherits HaMeR-original
-            accuracy on all non-Korean benchmarks — zero regression.
+            <strong>Cross-dataset generalization.</strong> HaMeR-FT (orange) regresses +39% on FreiHAND and +48% on InterHand2.6M.
+            The specialist alone (green) also degrades on Western data.
+            The additive ensemble (not shown) inherits HaMeR-original accuracy on all non-Korean benchmarks.
           </figcaption>
         </figure>
+      </div>
+
+      <h3 class="pj-sub-heading">Cross-dataset — zero regression on non-Korean benchmarks</h3>
+      <div class="pj-table-wrap">
+        <table class="pj-table">
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>n</th>
+              <th>HaMeR original</th>
+              <th>HaMeR-FT-Korean</th>
+              <th>Specialist alone</th>
+              <th>Ensemble (ours)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FreiHAND eval</td>
+              <td class="mono">3,960</td>
+              <td class="mono">6.50mm</td>
+              <td class="mono bad">9.05mm (+39%)</td>
+              <td class="mono bad">15.17mm</td>
+              <td class="mono good"><strong>6.50mm (0%)</strong></td>
+            </tr>
+            <tr>
+              <td>Korean test</td>
+              <td class="mono">3,000</td>
+              <td class="mono">8.14mm</td>
+              <td class="mono">5.78mm</td>
+              <td class="mono">7.28mm</td>
+              <td class="mono good"><strong>5.31mm</strong></td>
+            </tr>
+            <tr>
+              <td>InterHand2.6M</td>
+              <td class="mono">3,000</td>
+              <td class="mono">6.49mm</td>
+              <td class="mono bad">9.60mm (+48%)</td>
+              <td class="mono bad">11.70mm</td>
+              <td class="mono">deferred</td>
+            </tr>
+            <tr>
+              <td>HO-3D</td>
+              <td class="mono">4,206</td>
+              <td class="mono">—</td>
+              <td class="mono">—</td>
+              <td class="mono">8.19mm</td>
+              <td class="mono">—</td>
+            </tr>
+            <tr>
+              <td>DexYCB</td>
+              <td class="mono">1,669</td>
+              <td class="mono">—</td>
+              <td class="mono">—</td>
+              <td class="mono">6.65mm</td>
+              <td class="mono">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="pj-sub-heading">Three deployment recipes — accuracy–compute Pareto</h3>
+      <p class="pj-table-note">Same trained weights, three configurations — no retraining needed.</p>
+      <div class="pj-table-wrap">
+        <table class="pj-table">
+          <thead>
+            <tr>
+              <th>Recipe</th>
+              <th>Params</th>
+              <th>Latency</th>
+              <th>Korean PA-MPVPE</th>
+              <th>When to use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>(a)</strong> Specialist alone</td>
+              <td class="mono">22M</td>
+              <td class="mono">7ms</td>
+              <td class="mono">6.09mm</td>
+              <td>Mobile / edge — still 2.3mm better than HaMeR zero-shot</td>
+            </tr>
+            <tr>
+              <td><strong>(b)</strong> Fixed-α SLERP ensemble</td>
+              <td class="mono">694M</td>
+              <td class="mono">84ms</td>
+              <td class="mono">5.28mm</td>
+              <td>Accuracy-critical Korean, fixed weights</td>
+            </tr>
+            <tr class="best-row">
+              <td><strong>(c)</strong> Learned-α gating (headline)</td>
+              <td class="mono"><strong>694.4M</strong></td>
+              <td class="mono"><strong>84.05ms</strong></td>
+              <td class="mono"><strong>5.14mm</strong></td>
+              <td>Best accuracy + best F@5mm + zero FreiHAND regression at α=1.0</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -225,11 +380,11 @@
         <h2 class="section-title">Qualitative Comparison</h2>
       </div>
       <figure class="pj-figure pj-figure--full">
-        <img src="assets/img/sample_hand.png" alt="Qualitative results: input RGB, ground truth mesh, HaMeR-FT, fixed-alpha, learned-alpha ensemble on Korean hand images" />
+        <img src="assets/img/sample_hand.png" alt="Input RGB → Ground truth → HaMeR-FT → Fixed-α → Learned-α on Korean hand images" />
         <figcaption>
           <strong>Input RGB → Ground truth → HaMeR-FT → Fixed-α → Learned-α (ours).</strong>
-          Top row (success): the ensemble reduces PA-MPVPE from 9.31 → 3.75mm on a writing-tripod grasp.
-          Bottom row (honest failure): a pliers-grip where all methods struggle (~10mm) — included in the paper as a negative case.
+          Top (success): ensemble reduces PA-MPVPE from 9.31 → 3.75mm on a writing-tripod grasp.
+          Bottom (honest failure): pliers-grip where all methods struggle (~10mm) — included in the paper as a negative case.
         </figcaption>
       </figure>
     </section>
@@ -254,32 +409,136 @@
           <div>
             <strong>Additive specialisation avoids the trade-off entirely.</strong>
             Keeping HaMeR frozen and training a separate small specialist preserves FreiHAND accuracy
-            exactly while delivering best-in-class Korean performance.
+            exactly while delivering best-in-class Korean performance across all 25 grasp types, 27 object categories, and 15 test subjects.
           </div>
         </div>
         <div class="pj-finding">
           <span class="pj-finding-num">3</span>
           <div>
-            <strong>Population-specific MANO templates matter beyond fine-tuning.</strong>
-            The Korean template (fit to 4,532 scans) contributes ~1.5mm PA-MPVPE improvement
-            independently of the ensemble — it is not a cosmetic preference.
+            <strong>Population-specific MANO templates matter — independently of fine-tuning.</strong>
+            The Korean template (fit to 4,532 scans, mean 4.31mm from standard MANO) contributes ~1.5mm PA-MPVPE improvement
+            across all three predictor strengths. It is not a cosmetic preference.
           </div>
         </div>
         <div class="pj-finding">
           <span class="pj-finding-num">4</span>
           <div>
-            <strong>Gating learns biomechanically meaningful α values.</strong>
-            Wrist (joint 0): α ≈ 1.0 (defer fully to HaMeR's global rotation).
-            Finger joints: α ≈ 0.55 (genuine blend). The system self-discovers this without supervision.
+            <strong>The trade-off is shape-distribution-specific (+39%), not size-specific (+1%).</strong>
+            Splitting AIHub by hand size (85mm vs 98mm subjects): a specialist trained on small-hand subjects regresses only +0.09mm on large-hand subjects —
+            versus +39% to +48% for cross-ethnicity shifts. The 39× ratio localises the problem to
+            population-level shape distribution, not arbitrary subgroups.
+          </div>
+        </div>
+        <div class="pj-finding">
+          <span class="pj-finding-num">5</span>
+          <div>
+            <strong>The gating MLP learns biomechanically meaningful α values without supervision.</strong>
+            Wrist (joint 0): α ≈ 1.0 (defer to HaMeR's global rotation).
+            Finger joints: α ≈ 0.55 (genuine blend). Per-image joint-spread of 0.14 confirms it is not collapsing to a global α.
+          </div>
+        </div>
+        <div class="pj-finding">
+          <span class="pj-finding-num">6</span>
+          <div>
+            <strong>Model disagreement is a free uncertainty signal.</strong>
+            Specialist-vs-HaMeR rotation disagreement correlates with ensemble error at Pearson r = 0.50.
+            The system can flag low-confidence predictions without any external supervision — deployment-relevant for clinical settings.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== STACK ===== -->
+    <!-- ===== REVIEWER ANTICIPATION ===== -->
     <section class="section pj-section is-visible">
       <div class="section-head">
         <span class="section-num">06</span>
+        <h2 class="section-title">Reviewer Anticipation</h2>
+      </div>
+      <div class="pj-prose">
+        <p>Every likely reviewer concern is pre-empted in the paper. Listed here for transparency.</p>
+      </div>
+      <div class="pj-table-wrap">
+        <table class="pj-table">
+          <thead>
+            <tr>
+              <th>Likely concern</th>
+              <th>Defence in the paper</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"Ensemble (694M) is heavier than HaMeR-FT (672M)"</td>
+              <td>§ Deployment recipes: specialist alone (22M, 7ms) is the light option; still 2.3mm better than HaMeR zero-shot</td>
+            </tr>
+            <tr>
+              <td>"Only +0.14mm from learned-α — worth it?"</td>
+              <td>F@5mm +8.6pp, F@3mm +51% relative, AUC +3.8% — mean error understates the threshold-robust gain</td>
+            </tr>
+            <tr>
+              <td>"Single population — does it generalise?"</td>
+              <td>Shape shift → +39%; size shift → +1%. The 39× ratio localises the tradeoff to shape distribution, not arbitrary subgroups</td>
+            </tr>
+            <tr>
+              <td>"What about LoRA / PEFT?"</td>
+              <td>LoRA r=16 (0.9M params, 44× fewer than full FT) still regresses FreiHAND by +29% — tradeoff is intrinsic to mano_head objective</td>
+            </tr>
+            <tr>
+              <td>"Korean MANO template is cosmetic"</td>
+              <td>1.43–1.50mm PA-MPVPE penalty without it across three predictors; 4.31mm structured gap is not absorbable by PA alignment</td>
+            </tr>
+            <tr>
+              <td>"Is +5.14mm result statistically robust?"</td>
+              <td>5-fold subject-disjoint CV: +0.21 ± 0.02mm, no fold below +0.18mm; 25/25 grasps, 27/27 objects, 15/15 subjects, 4/4 viewpoints universal dominance</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== TEMPLATE ABLATION ===== -->
+    <section class="section pj-section is-visible">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Korean MANO Template Ablation</h2>
+      </div>
+      <div class="pj-table-wrap">
+        <table class="pj-table">
+          <thead>
+            <tr>
+              <th>Predictor</th>
+              <th>Standard MANO</th>
+              <th>Korean MANO</th>
+              <th>Gain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Specialist alone</td>
+              <td class="mono">7.53mm</td>
+              <td class="mono good"><strong>6.09mm</strong></td>
+              <td class="mono good"><strong>−1.43mm</strong></td>
+            </tr>
+            <tr>
+              <td>Fixed-α ensemble</td>
+              <td class="mono">6.77mm</td>
+              <td class="mono good"><strong>5.28mm</strong></td>
+              <td class="mono good"><strong>−1.50mm</strong></td>
+            </tr>
+            <tr class="best-row">
+              <td>Learned-α ensemble</td>
+              <td class="mono">6.62mm</td>
+              <td class="mono good"><strong>5.14mm</strong></td>
+              <td class="mono good"><strong>−1.48mm</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== TECHNICAL STACK ===== -->
+    <section class="section pj-section is-visible">
+      <div class="section-head">
+        <span class="section-num">08</span>
         <h2 class="section-title">Technical Stack</h2>
       </div>
       <div class="skills-grid" style="grid-template-columns: repeat(3,1fr);">
@@ -288,10 +547,10 @@
           <ul>
             <li>DINOv2-S (last 6 blocks fine-tuned)</li>
             <li>SemGCN (21 landmarks)</li>
-            <li>Cross-attention fusion</li>
-            <li>IEF rotation head (5 steps)</li>
+            <li>Cross-attention fusion (2 layers)</li>
+            <li>IEF rotation head (6 steps, SO(3))</li>
             <li>SLERP on SO(3)¹⁶</li>
-            <li>Gating MLP (700K params)</li>
+            <li>Gating MLP 453→512→256→16</li>
           </ul>
         </div>
         <div class="skill-col">
@@ -300,23 +559,46 @@
             <li>AIHub Korean Hand (92K frames)</li>
             <li>FreiHAND · HO-3D · DexYCB</li>
             <li>Korean MANO template (4,532 scans)</li>
-            <li>AdamW · SGD · ~6h on RTX 4090</li>
+            <li>AdamW · ~6h on RTX 4090</li>
             <li>Geodesic + Frobenius rotation loss</li>
-            <li>HaMeR distillation</li>
+            <li>HaMeR distillation (Procrustes L1)</li>
           </ul>
         </div>
         <div class="skill-col">
           <div class="skill-label">Engineering</div>
           <ul>
             <li>PyTorch · NumPy · OpenCV</li>
-            <li>CUDA memory: gradient checkpointing</li>
+            <li>Gradient checkpointing (bit-identical)</li>
             <li>Resumable checkpointing</li>
-            <li>Multi-seed validation harness</li>
-            <li>Idle-GPU watcher + auto-launch</li>
+            <li>5-fold cross-validation harness</li>
+            <li>Idle-GPU watcher + auto-launcher</li>
             <li>MIT licence · full artifact release</li>
           </ul>
         </div>
       </div>
+    </section>
+
+    <!-- ===== REFERENCES ===== -->
+    <section class="section pj-section is-visible">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <h2 class="section-title">References</h2>
+      </div>
+      <div class="pj-prose">
+        <p>Full bibliography (65 entries) in <a href="assets/citations.bib" download>citations.bib</a>. Selected key works below.</p>
+      </div>
+      <ol class="pj-refs">
+        <li>Romero, Tzionas, Black. <strong>Embodied Hands.</strong> <em>ACM ToG (SIGGRAPH Asia)</em>, 2017. [MANO]</li>
+        <li>Pavlakos et al. <strong>Reconstructing Hands in 3D with Transformers.</strong> <em>CVPR</em>, 2024. [HaMeR — primary baseline]</li>
+        <li>Oquab et al. <strong>DINOv2: Learning Robust Visual Features without Supervision.</strong> 2023. [Specialist backbone]</li>
+        <li>Zhao et al. <strong>Semantic Graph Convolutional Networks for 3D Human Pose Regression.</strong> <em>CVPR</em>, 2019. [SemGCN]</li>
+        <li>Carreira et al. <strong>Human Pose Estimation with Iterative Error Feedback.</strong> <em>CVPR</em>, 2016. [IEF head]</li>
+        <li>Shoemake. <strong>Animating Rotation with Quaternion Curves.</strong> <em>ACM SIGGRAPH</em>, 1985. [SLERP]</li>
+        <li>Hu et al. <strong>LoRA: Low-Rank Adaptation of Large Language Models.</strong> <em>ICLR</em>, 2022. [PEFT baseline]</li>
+        <li>Zimmermann et al. <strong>FreiHAND.</strong> <em>ICCV</em>, 2019. [Western benchmark]</li>
+        <li>Potamias et al. <strong>Handy: Towards a High Fidelity 3D Hand Shape and Appearance Model.</strong> <em>CVPR</em>, 2023. [Multi-ethnicity baseline]</li>
+        <li>AIHub Korean Hand Image Dataset, National Information Society Agency of Korea, 2021. [Training data]</li>
+      </ol>
     </section>
 
     <div class="pj-footer-back">

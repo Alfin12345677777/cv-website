@@ -206,6 +206,49 @@
   text-align: right;
 }
 
+/* ---- sub-headings ---- */
+.pj-sub-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 2.5rem 0 .6rem;
+}
+.pj-table-note {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-mute);
+  margin-bottom: .75rem;
+  letter-spacing: .02em;
+}
+
+/* ---- ORCID inline ---- */
+.proj-orcid {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-mute);
+  margin-left: 1.2rem;
+  letter-spacing: .04em;
+}
+.proj-orcid a { color: var(--ink-mute); border-bottom: 1px solid var(--rule); }
+.proj-orcid a:hover { color: var(--accent); text-decoration: none; border-color: var(--accent); }
+
+/* ---- references list ---- */
+.pj-refs {
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.pj-refs li {
+  font-size: .92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.pj-refs li strong { color: var(--ink); font-weight: 600; }
+.pj-refs li em { font-style: italic; color: var(--ink-mute); }
+
 /* ---- bottom nav ---- */
 .pj-footer-back {
   padding: 3rem 0 1rem;
