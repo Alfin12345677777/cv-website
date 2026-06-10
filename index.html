@@ -264,7 +264,32 @@
           </div>
         </article>
 
-        <!-- Project 2: Stellink -->
+        <!-- Project 2: CT Segmentation -->
+        <article class="proj">
+          <div class="proj-media">
+            <img src="assets/img/ct-segmentation.png" alt="Axial CT cross-section with adaptive octree organ segmentation overlay" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none"><span>ct segmentation</span><small>assets/img/ct-segmentation.png</small></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">2026 — present · research · MICCAI 2027</div>
+            <h3 class="proj-title">Anatomy-Guided Adaptive Partitioning for Multi-Organ CT Segmentation</h3>
+            <p>
+              Extends MagicNet (CVPR 2023) by replacing its uniform grid with an anatomy-aware
+              <strong>adaptive octree</strong> — a frozen TotalSegmentator prior drives finer cube
+              subdivision where small organs and boundaries live. In the semi-supervised regime
+              (10% labels, 4 scans), the octree reliably improves tail-organ DSC:
+              <strong>pancreas +2.5, esophagus +3.0</strong> (stable across 3 seeds).
+              Multi-seed evaluation overturned two of our own hypotheses, including a "regression"
+              that turned out to be pure seed noise (right adrenal ±0.068).
+            </p>
+            <ul class="proj-stack">
+              <li>PyTorch</li><li>TotalSegmentator</li><li>V-Net</li>
+              <li>MagicNet</li><li>FLARE22</li><li>Mean-teacher SSL</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Project 3: Stellink -->
         <article class="proj">
           <div class="proj-media">
             <img src="assets/img/stellink-screens.png" alt="Stellink app logo" class="proj-img proj-img--logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
@@ -288,7 +313,7 @@
           </div>
         </article>
 
-        <!-- Project 3: Beacon -->
+        <!-- Project 4: Beacon -->
         <article class="proj">
           <div class="proj-media">
             <img src="assets/img/beacon-screens.png" alt="Beacon app logo" class="proj-img proj-img--logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
