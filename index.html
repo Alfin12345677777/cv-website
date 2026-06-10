@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alfin W. A. Putra — 3D Computer Vision Researcher</title>
-  <meta name="description" content="Alfin William Adi Putra — undergraduate researcher in 3D computer vision and medical AI at Handong Global University. Currently working on hand pose and MANO mesh reconstruction at the AIMV Lab." />
+  <meta name="description" content="Alfin William Adi Putra — undergraduate researcher in 3D computer vision at Handong Global University. KoreanHand (ACCV 2026 under review): population-specialized hand mesh, PA-MPJPE 5.31mm, zero regression on FreiHAND. JNLP 2026 co-author." />
   <meta name="author" content="Alfin William Adi Putra" />
 
   <!-- Open Graph / social preview -->
   <meta property="og:title" content="Alfin W. A. Putra — 3D Computer Vision Researcher" />
-  <meta property="og:description" content="Undergraduate researcher in 3D computer vision and medical AI at Handong Global University. MANO mesh reconstruction, PA-MPJPE 7.73mm. KAIST CS479 audit. JNLP 2026 co-author." />
+  <meta property="og:description" content="Undergraduate researcher in 3D computer vision at Handong Global University. KoreanHand (ACCV 2026): PA-MPJPE 5.31mm, beats SOTA fine-tuning by 8.1%, zero regression on FreiHAND. JNLP 2026 co-author." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alfin12345677777.github.io/cv-website/" />
   <meta property="og:image" content="https://alfin12345677777.github.io/cv-website/assets/img/og-image.png" />
@@ -241,8 +241,8 @@
         <!-- Project 1: Hand mesh -->
         <article class="proj">
           <div class="proj-media">
-            <img src="assets/img/handmesh-comparison.png" alt="Korean-shaped MANO mesh: ground truth vs predicted" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-            <div class="img-placeholder" style="display:none"><span>mesh comparison</span><small>assets/img/handmesh-comparison.png</small></div>
+            <img src="assets/img/Arcitecture_hand.png" alt="KoreanHand system architecture: specialist + HaMeR-FT + learned-α gating ensemble" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none"><span>architecture</span><small>assets/img/Arcitecture_hand.png</small></div>
           </div>
           <div class="proj-body">
             <div class="proj-meta">Jan – Jun 2026 · research · ACCV 2026</div>
@@ -261,6 +261,20 @@
             <div class="proj-links">
               <a href="https://github.com/Alfin12345677777/KoreanHand-Population-Specific-Hand-Mesh-Reconstruction-via-Learned-Specialist-Foundation-Ensembling" target="_blank" rel="noopener">github →</a>
             </div>
+          </div>
+          <div class="proj-figures">
+            <figure class="proj-figure">
+              <img src="assets/img/F_score_hand.png" alt="F@ε accuracy curves for joints and mesh vertices on Korean test set" />
+              <figcaption><strong>F@ε accuracy curves</strong> on the 3,000-frame Korean test set (joints left, mesh vertices right). The learned-α ensemble (red) leads at every threshold, above HaMeR-FT (orange) and the fixed-α baseline (dashed).</figcaption>
+            </figure>
+            <figure class="proj-figure">
+              <img src="assets/img/cross_val_hand.png" alt="Cross-dataset PA-MPJPE comparison across FreiHAND, Korean test, InterHand2.6M, HO-3D, DexYCB" />
+              <figcaption><strong>Cross-dataset generalization.</strong> Fine-tuning HaMeR on Korean data regresses +39% on FreiHAND and +48% on InterHand2.6M. The additive ensemble inherits HaMeR-original accuracy on all non-Korean benchmarks — zero regression.</figcaption>
+            </figure>
+            <figure class="proj-figure">
+              <img src="assets/img/sample_hand.png" alt="Qualitative comparison: input RGB, ground truth, HaMeR-FT, fixed-alpha ensemble, learned-alpha ensemble" />
+              <figcaption><strong>Qualitative results.</strong> Top (success): ensemble reduces PA-MPVPE 9.31 → 3.75mm on a writing-tripod grasp. Bottom (failure): pliers-grip where all methods struggle (~10mm) — included as an honest negative.</figcaption>
+            </figure>
           </div>
         </article>
 
@@ -357,7 +371,7 @@
           <div class="tl-body">
             <h3>Undergraduate Researcher, AIMV Lab</h3>
             <div class="tl-org">AI Medical Vision Lab · Advisor: Prof. Xiao Peng Yang</div>
-            <p>3D hand pose and MANO mesh reconstruction. Designed full RGB-to-mesh pipeline; targeting BMVC/ACCV submission.</p>
+            <p>KoreanHand: population-specialized hand mesh reconstruction. Paper under review at ACCV 2026.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -466,8 +480,7 @@
       </div>
 
       <p class="contact-status">
-        Currently applying: <strong>KAIST Visual AI Group, Summer 2026</strong> ·
-        <strong>SNU MILAB, Summer 2026</strong> · open to more.
+        Currently applying: <strong>SNU MILAB, Summer 2026</strong> · open to more.
       </p>
 
       <p class="contact-lede">
@@ -498,7 +511,7 @@
 
     <footer class="footer">
       <div>© 2026 Alfin W. A. Putra · Pohang, Republic of Korea</div>
-      <div class="footer-sub">Last updated <span id="last-updated">May 2026</span> · Built by hand with HTML + CSS</div>
+      <div class="footer-sub">Last updated <span id="last-updated">June 2026</span> · Built by hand with HTML + CSS</div>
     </footer>
   </main>
 
